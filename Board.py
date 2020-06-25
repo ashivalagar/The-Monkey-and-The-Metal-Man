@@ -526,7 +526,7 @@ if __name__ == "__main__":
     width = 19
     walls = []
     highPoints = []
-    f = open("E:\\Hackable by design\\Hackable-By-Design\\games\\The Monkey and The Metal Man\\board1")
+    f = open("./board1")
     for x in range(width):
         stuff = f.readline()
         # print(len(stuff))

@@ -228,3 +228,35 @@ Example:
 ```python
 assasin_direction = [0,1]
 ```
+## Bot class
+
+Required functions:
+``` python
+def __init__(self, spotter_point, assasin_point, spotter_direction, assasin_direction):
+    pass
+
+def step(self,state):
+    pass
+```
+## Running the files
+
+To run the program for the first time, run the Board.py file.
+
+This will create a history.hbd file.
+
+Next, run the betaTestGame.py file to view the game. While doing so, you have to click on the pygame window everytime you want to see the next turn being played.
+
+I have provided a random agent as a baseline.
+
+To use your own agent, make a class with the initilisation function taking in the spotter_point, assasin_point, spotter_direction, and assasin_direction. Import this class into the board.py file.
+
+```python 
+from yourFile import yourAgent
+```
+
+Now, add your agent class into the agent_classes array in line 539.
+
+```python
+    board = Board(height, width, walls, highPoints, 'history.hbd',agent_classes=[yourAgent, HBDagent, HBDagent, HBDagent])
+
+```
