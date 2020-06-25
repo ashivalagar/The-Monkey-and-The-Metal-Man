@@ -33,7 +33,7 @@ The goal of the game is to have the last surviving piece(s) on the board.
 - The bots start with no knowledge of the environment
 - The coordinate system of the map has been indicated below
 
-![Coordinate System](.\docs\Coordinate_system.PNG)
+![Coordinate System](./docs/Coordinate_system.PNG)
 
 ### Line of Sight
 
@@ -112,7 +112,7 @@ Before map collapses:
 
 After map collapses:
 
-![After map collapses](./docs/AFter_map_collapses.PNG)
+![After map collapses](./docs/After_map_collapses.PNG)
 
 ## Percepts
 
