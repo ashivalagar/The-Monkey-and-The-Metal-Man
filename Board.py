@@ -2,12 +2,18 @@ import matplotlib
 import matplotlib.pyplot as plt
 import copy
 from agent import HBDagent
+from archer import archer
 class Board:
     def __init__(self,height,width,walls,highPoints,history_file,agent_classes =[]):
 
         # define the possible spawn points as the 4 corners
+        # default map
         spawn_points = [((0,0),(0,1)),((0,width-1),(1,width-1)),((height-1,width-1),(height-1,width-2)),((height-1,0),(height-2,0))]
         spawn_directions = [((1,0),(1,0)),((0,-1),(0,-1)),((-1,0),(-1,0)),((0,1),(0,1))]
+
+        #board_tourney1_1
+        # spawn_points = [((4,8),(4,7)),((8,14),(7,14)),((14,10),(14,11)),((10,4),(11,4))]
+        # spawn_directions = [((1,0),(1,0)),((0,-1),(0,-1)),((-1,0),(-1,0)),((0,1),(0,1))]
         initialising_vals = [[*spawn_points[x],*spawn_directions[x]] for x in range(4)]
         # print(initialising_vals)
         # store size of the board
@@ -214,11 +220,11 @@ class Board:
                 (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, other_spotter_alive, other_assasin_alive, other_agent_object) = other_agent
                 if other_spotter_alive:
                     if other_spotter_point == current_spotter_point:
-                        self.agents[ind] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, 0, other_assasin_alive, other_agent_object)
+                        self.agents[other_agent_id] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, 0, other_assasin_alive, other_agent_object)
                         print("SPOTTER ID #{} was killed!".format(other_agent_id))
                 if other_assasin_alive:
                     if other_assasin_point == current_spotter_point:
-                        self.agents[ind] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, other_spotter_alive, 0, other_agent_object)
+                        self.agents[other_agent_id] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, other_spotter_alive, 0, other_agent_object)
                         print("ASSASIN ID #{} was killed!".format(other_agent_id))
 
         if assasin_alive:
@@ -234,11 +240,11 @@ class Board:
                 (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, other_spotter_alive, other_assasin_alive, other_agent_object) = other_agent
                 if other_spotter_alive:
                     if other_spotter_point == current_assasin_point:
-                        self.agents[ind] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, 0, other_assasin_alive, other_agent_object)
+                        self.agents[other_agent_id] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, 0, other_assasin_alive, other_agent_object)
                         print("SPOTTER ID #{} was killed!".format(other_agent_id))
                 if other_assasin_alive:
                     if other_assasin_point == current_assasin_point:
-                        self.agents[ind] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, other_spotter_alive, 0, other_agent_object)
+                        self.agents[other_agent_id] = (other_agent_id, other_spotter_point, other_assasin_point, other_spotter_direction, other_assasin_direction, other_spotter_alive, 0, other_agent_object)
                         print("ASSASIN ID #{} was killed!".format(other_agent_id))
         
         self.agents[agentId] = (agentId, current_spotter_point, current_assasin_point, current_spotter_direction, current_assasin_direction, spotter_alive, assasin_alive, agent_object)
@@ -536,7 +542,7 @@ if __name__ == "__main__":
             elif letters =="O":
                 highPoints.append((x,ind))
     f.close()
-    board = Board(height,width,walls,highPoints,'history.hbd',agent_classes=[HBDagent,HBDagent,HBDagent,HBDagent])
+    board = Board(height,width,walls,highPoints,'history.hbd',agent_classes=[archer,archer,archer,archer])
     while not board.done:
         board.gameStep()
         # board.displayBoard()
