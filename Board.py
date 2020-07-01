@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import copy
 from agent import HBDagent
 from agentP import agentP
+from archer import archer
+
 class Board:
     def __init__(self,height,width,walls,highPoints,history_file,agent_classes =[]):
 
@@ -542,7 +544,9 @@ if __name__ == "__main__":
             elif letters =="O":
                 highPoints.append((x,ind))
     f.close()
-    board = Board(height,width,walls,highPoints,'history.hbd',agent_classes=[agentP,agentP,agentP,agentP])
+
+    board = Board(height,width,walls,highPoints,'history.hbd',agent_classes=[agentP,archer,archer,agentP])
+
     while not board.done:
         board.gameStep()
         # board.displayBoard()
