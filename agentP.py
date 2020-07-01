@@ -1,10 +1,15 @@
 import random 
+from math import floor
 class agentP:
     def __init__(self,*args):
         # print(args)
         pass
     def step(self,state):
         # print(state)
+        assasin_moves = 0
+        assasin_direction = 0
+        spotter_direction = 0
+        spotter_moves = 0
         vals = [[0,1],[0,-1],[1,0],[-1,0]]
         spotter_postion = state['spotter location']
         spotter_dir = state['spotter direction']
@@ -15,13 +20,13 @@ class agentP:
         # print('spotter_dir',spotter_dir)
         print('assasin_position', assasin_postion)
         print('assasin_dir', assasin_dir)
-        if (spotter_postion[0] in [7,8,9,10,11] and spotter_postion[1] in [7,8,9,10,11]):
+        if (spotter_postion[0] in [6,7,8,9,10,11] and spotter_postion[1] in [6,7,8,9,10,11]):
             # spotter_moves=[[0,0], [0,0]]
             # spotter_direction = [1,0]
             spotter_moves = [random.choice(vals),random.choice(vals)]
             spotter_direction = random.choice(vals)
         else:
-            if (spotter_postion[0] < len(board)/2 and spotter_postion[1]< len(board[0])/2):
+            if (spotter_postion[0] < floor(len(board)/2) and spotter_postion[1]< floor(len(board[0])/2)):
                 if (spotter_dir[0] == -1 or spotter_dir[1]==-1):
                     spotter_direction = [0,1]
                     spotter_moves=[[0,0], [0,0]]
@@ -61,7 +66,7 @@ class agentP:
                     else:
                         spotter_direction = [0,1]
                         spotter_moves = [[0,1], [0, 1]]
-            if (spotter_postion[0] < len(board)/2 and spotter_postion[1] > len(board[0])/2):
+            if (spotter_postion[0] < floor(len(board)/2) and spotter_postion[1] > floor(len(board[0])/2)):
                 if (spotter_dir[0] == -1 or spotter_dir[1]==1):
                     spotter_direction = [0,-1]
                     spotter_moves=[[0,0], [0,0]]
@@ -101,7 +106,7 @@ class agentP:
                     else:
                         spotter_direction = [0,-1]
                         spotter_moves = [[0,-1], [0, -1]]
-            if (spotter_postion[0] > len(board)/2 and spotter_postion[1] > len(board[0])/2):
+            if (spotter_postion[0] > floor(len(board)/2) and spotter_postion[1] > floor(len(board[0])/2)):
                 if (spotter_dir[0] == 1 or spotter_dir[1]==1):
                     spotter_direction = [0,-1]
                     spotter_moves=[[0,0], [0,0]]
@@ -142,7 +147,7 @@ class agentP:
                         spotter_direction = [0,-1]
                         spotter_moves = [[0,-1], [0, -1]]
 
-            if (spotter_postion[0]>len(board)/2 and spotter_postion[1]<len(board[0])/2):
+            if (spotter_postion[0]>floor(len(board)/2) and spotter_postion[1]<floor(len(board[0])/2)):
                 if (spotter_dir[0] == 1 or spotter_dir[1]==-1):
                     spotter_direction = [0,1]
                     spotter_moves=[[0,0], [0,0]]
@@ -190,7 +195,7 @@ class agentP:
             assasin_moves = [random.choice(vals),random.choice(vals)]
             assasin_direction = random.choice(vals)
         else:
-            if (assasin_postion[0] < len(board)/2 and assasin_postion[1]< len(board[0])/2):
+            if (assasin_postion[0] < floor(len(board)/2) and assasin_postion[1]< floor(len(board[0])/2)):
                 if (assasin_dir[0] == -1 or assasin_dir[1]==-1):
                     assasin_direction = [0,1]
                     assasin_moves=[[0,0], [0,0]]
@@ -230,7 +235,7 @@ class agentP:
                     else:
                         assasin_direction = [0,1]
                         assasin_moves = [[0,1], [0, 1]]
-            if (assasin_postion[0] < len(board)/2 and assasin_postion[1] > len(board[0])/2):
+            if (assasin_postion[0] < floor(len(board)/2) and assasin_postion[1] > floor(len(board[0])/2)):
                 if (assasin_dir[0] == -1 or assasin_dir[1]==1):
                     assasin_direction = [0,-1]
                     assasin_moves=[[0,0], [0,0]]
@@ -270,7 +275,7 @@ class agentP:
                     else:
                         assasin_direction = [0,-1]
                         assasin_moves = [[0,-1], [0, -1]]
-            if (assasin_postion[0] > len(board)/2 and assasin_postion[1] > len(board[0])/2):
+            if (assasin_postion[0] > floor(len(board)/2) and assasin_postion[1] > floor(len(board[0])/2)):
                 if (assasin_dir[0] == 1 or assasin_dir[1]==1):
                     assasin_direction = [0,-1]
                     assasin_moves=[[0,0], [0,0]]
@@ -311,7 +316,7 @@ class agentP:
                         assasin_direction = [0,-1]
                         assasin_moves = [[0,-1], [0, -1]]
 
-            if (assasin_postion[0]>len(board)/2 and assasin_postion[1]<len(board[0])/2):
+            if (assasin_postion[0]>floor(len(board)/2) and assasin_postion[1]<floor(len(board[0])/2)):
                 if (assasin_dir[0] == 1 or assasin_dir[1]==-1):
                     assasin_direction = [0,1]
                     assasin_moves=[[0,0], [0,0]]
